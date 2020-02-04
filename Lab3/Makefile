@@ -15,8 +15,7 @@ test:
 	./run_test
 
 check:
-	c_style_check sorter.c
+	../c_style_check sorter.c
 
 clean:
 	rm -f sorter *.o
-
