@@ -7,6 +7,7 @@
  * Element Sort, but it can be changed to Bubble Sort by adding -b at the
  * command line. There is also the choice of not printing out the sorted
  * integers using -q at the command line.
+ *
  */
 
 #include <stdio.h>
