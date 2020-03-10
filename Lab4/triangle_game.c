@@ -91,38 +91,28 @@ void unmake_move(int board[], int move[]) {
     board[move[2]] = 0;
 }
 
-int solveHelp(int board[], int *prints) {
-    int sum = 0;
+int solve(int board[]) {
     int i;
+    int sum = 0;
     if (npegs(board) == 1) {
-        if (*prints < PEG_SPACES - 1) {
-            triangle_print(board);
-            printf("\n");
-            (*prints)++;
-        }
-            return 1;
+        triangle_print(board);
+        printf("\n");
+        return 1;
     }
     for (i = 0; i < NMOVES; i++) {
         if (valid_move(board, moves[i])) {
             make_move(board, moves[i]);
-            sum += solveHelp(board, prints);
+            if (sum == 0) {
+                sum = solve(board);
+            }
             unmake_move(board, moves[i]);
         }
     }
-    if (sum > 0) {
-        if (*prints < PEG_SPACES - 1) {
-            triangle_print(board);
-            printf("\n");
-            (*prints)++;
-        }
-        return 1;
-    };
-    return 0;
-}
-
-int solve(int board[]) {
-    int p = 0;
-    solveHelp(board, &p);
+    if (sum == 1) {
+        triangle_print(board);
+        printf("\n");
+    }
+    return sum;
 }
 
 int main(int argc, char* argv[]) {

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "memcheck.h"
 #include <string.h>
+#include <time.h>
 
 /* Prints usage message if incorrect number of command line arguments given */
 void usage(char program[]);
@@ -102,6 +103,7 @@ int main(int argc, char *argv[]) {
     int *newArr;
     int i;
     int j;
+    srand(time(NULL));
     /* Check for incorrect number of cmd line args */
     if (argc != 3) {
         usage(argv[0]);
